@@ -145,6 +145,8 @@ En conjunto, la combinación de diferencias finitas + SOR + esquemas “upwind�
 
 El código es ejecutado en la version 3.13.5 de python. Las librerías necesarias son numpy, matplotlib y scipy.
 
+El archivo "ModeloSOR1.ipynb" corresponde al código utilizado para $u(x,y)$ constante y el archivo "ModeloSOR2.ipynb" corresponde a $u(x,y) variable en función de la profundidad en x.
+
 Para el análisis de datos se ejecutaron dos casos distintos, uno en el que $u(x,y)$ era constante, y otro en el que existe una función relacionada a la profundidad en x. Ambos casos consideran $v(x,y) = 0$.
 
 El código completo se ejecuta dentro de un único archivo Python y no requiere archivos adicionales.
@@ -181,3 +183,6 @@ Esto es precisamente lo que ocurre en ríos reales, donde la velocidad no es uni
 Por eso el segundo caso es más realista y más coherente físicamente.
 
 Con los otros gráficos formados se puede concluir lo mismo.
+
+*Todos los gráficos de resultados se encuentran en la carpeta "Resultados".*
+
