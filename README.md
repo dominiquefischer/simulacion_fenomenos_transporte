@@ -17,4 +17,4 @@ El río posee:
 - Mezcla turbulenta lateral caracterizada por un coeficiente de difusión ε<sub>y</sub>
 
 **La formulación física** considera un término de convección y de difusión, a continuación la ecuación:
-![Geometría](Imagenmodelo1.jpg)
+![Ecuación](Ecuación.png)
