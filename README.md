@@ -171,7 +171,7 @@ En ambos casos, para ejecutar el código solamente hay que descargarlo y ejecuta
 Los resultados se pueden observar de manera clara con los gráficos formados con el código. A continuación se presentan los gráficos que sintetizan los principales resultados.
 
 Al comparar los perfiles $C(y)$ considerando $u(x,y)$ constante v/s en función de la profundidad se ve lo siguiente:
-![Cy](C(y)ucte.png) ![Cyu](C(y)ufuncion.png)
+![Cy](Resultados/Perfil_C(y)(1).png) !![Cy](Resultados/Perfil_C(y)(2).png)
 
 Al haber velocidades muy distintas, la difusión lateral no alcanza a mezclar el contaminante hacia regiones donde la advección es más rápida.
 El río se vuelve un sistema con zonas de transporte eficiente (centro) y zonas lentas (cerca del difusor), lo que reduce la mezcla.
