@@ -13,7 +13,7 @@ El proyecto se vincula directamente con los desafíos de sustentabilidad al prop
 ## Sistema físico modelado
 El sistema corresponde a un río de **geometría rectangular**, con un ancho transversal $W$, largo ($L_x$) y profundidad $p(x)$. En la orilla se ubica una industria que descarga de manera continua un contaminante a través de un difusor horizontal ubicado entre ($y = h$) y ($y = h + W_d$), como ocurre en el caso del vertimiento de GRASCO S.A. en el río Maipo.
 Se adjunta una imagen del sistema.
-![Geometría](Imagenmodelo1.jpg)
+![Geometría](Imagenes/Imagenmodelo1.jpg)
 
 Este tipo de descarga genera una **pluma de contaminante** que se desplaza y se mezcla con el agua del río a lo largo del eje longitudinal (x) y transversal (y) del cauce.
 
@@ -38,7 +38,7 @@ Componentes principales del sistema:
 3. Decaimiento químico: Se incorpora mediante un término de desaparición proporcional a la concentración, con constante $k_e$.
    
 Estos mecanismos se acoplan para formar la ecuación diferencial parcial bidimensional utilizada en el modelo:
-![Ecuación](Ecuacion.png)
+![Ecuación](Imagenes/Ecuacion.png)
 
 donde:
 
@@ -89,27 +89,27 @@ Y en cada nodo se define: $C_{ij}$, $u_{ij}$ y $v_{ij}$
 
 Derivada en x:
 
-![Derivadax](derivadaenx.png)
+![Derivadax](Imagenes/derivadaenx.png)
 
 Derivada en y:
 
-![Derivaday](derivadaeny.png)
+![Derivaday](Imagenes/derivadaeny.png)
 
 Segunda derivada en y:
 
-![2derivaday](derivada2eny.png)
+![2derivaday](Imagenes/derivada2eny.png)
 
 *Para las primeras derivadas se utilizó la aproximación de primer orden para mantener la estabilidad en la solución, y que el modelo convergiera. Para la derivada de segundo orden se utilizó la aproximación de segundo orden. Además se utilizarón las aproximaciones hacia atrás en las primeras derivadas ("esquema unwind"). Este esquema “upwind” es apropiado cuando la advección domina en la dirección x (número de Peclet grande), ya que evita oscilaciones numéricas y favorece la estabilidad del método.*
 
 (3) **Ecuación discreta** en cada nodo:
 
-![discreta](ecuaciondiscr.png)
+![discreta](Imagenes/ecuaciondiscr.png)
 
 Que puede reordenarse para dejar $C_{ij}$ en términos de sus vecinos, lo que genera un sistema lineal de la forma $AC=b$. Lo cual más adelante se utilizará en el método SOR.
 
 (4) Se discretizan las **condiciones de borde**:
 
-![CB](condborde.png)
+![CB](Imagenes/condborde.png)
 
 **Resolución del sistema con el método SOR**
 
