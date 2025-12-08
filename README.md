@@ -42,11 +42,11 @@ Estos mecanismos se acoplan para formar la ecuación diferencial parcial bidimen
 
 donde:
 
-- $C(x,y)$: concentración [M/L³]  
-- $u(x,y)$: velocidad longitudinal [L/T]  
-- $v(x,y)$: velocidad transversal [L/T]  
-- ε<sub>y</sub>: difusividad turbulenta lateral [L²/T]  
-- $k_e$: coeficiente de decaimiento [1/T]
+- $C(x,y)$: concentración
+- $u(x,y)$: velocidad longitudinal
+- $v(x,y)$: velocidad transversal
+- ε<sub>y</sub>: difusividad turbulenta lateral
+- $k_e$: coeficiente de decaimiento
 
 Las **condiciones de borde** son las siguientes:
 
@@ -69,7 +69,7 @@ Los **supuestos** adoptados en este modelo son los siguientes:
 6.	El flujo promedio no cambia con el tiempo
 7.	El río presenta leves variaciones en su profundidad en la longitudinal.
 
-## Descprición del método númerico utilizado
+## Descripción del método númerico utilizado
 En este problema se resuelve la concentración estacionaria $C(x,y)$ mediante la discretización de diferencias finitas sobre una malla rectangular y con el método iterativo SOR (Successive Over-Relaxation).
 
 El **método de diferencias finitas** se basa en aproximar las derivadas por cocientes de diferencias evaluados en puntos de una malla. Cada derivada se reemplaza por una combinación lineal de valores de la función en nodos vecinos. De este modo, una ecuación diferencial parcial continua se transforma en un sistema lineal algebraico que aproxima la solución en un conjunto discreto de puntos.
@@ -77,7 +77,7 @@ El **método de diferencias finitas** se basa en aproximar las derivadas por coc
 El uso de **SOR** es apropiado porque la ecuación discretizada es de tipo elíptico (difusión con advección estacionaria), lo que genera un sistema lineal grande pero bien condicionado para métodos iterativos. Además, SOR permite resolver el problema sin ensamblar explícitamente la matriz completa, trabajando nodo a nodo, lo que simplifica la implementación y reduce el consumo de memoria.
 
 ### Pasos para la discretización
-(1) Se definió un dominio rectangular en las direcciones longitudinal y trannsversal con una malla uniforme:
+(1) **Se definió un dominio** rectangular en las direcciones longitudinal y transversal con una malla uniforme:
 
 $x_i$ $= i△x$, $i = 0,1,...,N_x$
 
@@ -85,20 +85,88 @@ $y_j$ $= j△y$, $j = 0,1,...,N_y$
 
 Y en cada nodo se define: $C_{ij}$, $u_{ij}$ y $v_{ij}$
 
-(2) Se aproximaron las derivadas:
+(2) Se **aproximaron las derivadas**:
+
+Derivada en x:
+
+![Derivadax](derivadaenx.png)
+
+Derivada en y:
+
+![Derivaday](derivadaeny.png)
+
+Segunda derivada en y:
+
+![2derivaday](derivada2eny.png)
+
+*Para las primeras derivadas se utilizó la aproximación de primer orden para mantener la estabilidad en la solución, y que el modelo convergiera. Para la derivada de segundo orden se utilizó la aproximación de segundo orden. Además se utilizarón las aproximaciones hacia atrás en las primeras derivadas ("esquema unwind"). Este esquema “upwind” es apropiado cuando la advección domina en la dirección x (número de Peclet grande), ya que evita oscilaciones numéricas y favorece la estabilidad del método.*
+
+(3) **Ecuación discreta** en cada nodo:
+
+![discreta](ecuaciondiscr.png)
+
+Que puede reordenarse para dejar $C_{ij}$ en términos de sus vecinos, lo que genera un sistema lineal de la forma $AC=b$. Lo cual más adelante se utilizará en el método SOR.
+
+(4) Se discretizan las **condiciones de borde**:
+
+![CB](condborde.png)
+
+**Resolución del sistema con el método SOR**
+
+Una vez armado el sistema discreto, se resolvió mediante el método de Sobre-Relajación Sucesiva (SOR).
+
+El algoritmo se resume en:
+- Inicializar un campo de concentración $cC_{ij}$ y aplicar las condiciones de borde
+- Se definen los coeficientes SOR, a partir del reordenamiento de la ecuación discretizada.
+- Recorrer todos los nodos interiores calculando el residuo y actualizando $cC_{ij}$ con SOR.
+- Reaplicar condiciones de borde.
+- Calcular el residuo medio global; si es mayor que una tolerancia fijada, continuar iterando.
+- Detener cuando el residuo cae por debajo de la tolerancia, obteniendo el campo estacionario de concentración.
+
+**Justificación del método**
+
+El método numérico elegido es adecuado para el problema por varias razones:
+1. Geometría simple y malla estructurada: El río se modela como un dominio rectangular 2D, ideal para una malla regular y para aplicar diferencias finitas de forma directa.
+
+2. Fenómeno estacionario y elíptico: Al trabajar en estado estacionario, la ecuación se vuelve de tipo elíptico, para la cual los métodos de diferencias finitas con SOR son clásicos, robustos y bien entendidos.
+
+3. Régimen de advección dominante en $x$: El uso de esquemas “upwind” en la dirección del flujo permite manejar correctamente números de Peclet altos, evitando oscilaciones no físicas en la solución y manteniendo estabilidad numérica, algo crítico en ríos con velocidades importantes.
+
+4. Difusión lateral bien representada: La aproximación central de segundo orden en $y$ captura de manera razonable la mezcla transversal debida a la turbulencia, que es el mecanismo clave de homogenización en la sección.
+
+5. Flexibilidad para incorporar perfiles de velocidad realistas: El método permite incluir un perfil de velocidad longitudinal $u(x,y)$ dependiente de la profundidad y de la posición, lo que acerca el modelo a la hidrodinámica real del río Maipo.
+
+6. Eficiencia computacional: SOR ofrece una buena relación entre simplicidad, estabilidad y tiempo de cómputo para mallas del tamaño considerado, permitiendo obtener soluciones de alta resolución sin necesidad de métodos más complejos.
+
+En conjunto, la combinación de diferencias finitas + SOR + esquemas “upwind” entrega un método numérico coherente con la física del problema, estable para un régimen advectivo–difusivo y suficientemente preciso para analizar la dispersión de contaminantes en la cuenca del río Maipo en el contexto de evaluaciones ambientales y sustentabilidad.
 
 
+## Instrucciones para implementar el código
 
+El código es ejecutado en la version 3.13.5 de python. Las librerías necesarias son numpy, matplotlib y scipy.
 
+Para el análisis de datos se ejecutaron dos casos distintos, uno en el que $u(x,y)$ era constante, y otro en el que existe una función relacionada a la profundidad en x. Ambos casos consideran $v(x,y) = 0$.
 
+El código completo se ejecuta dentro de un único archivo Python y no requiere archivos adicionales.
 
+El archivo contiene:
++ Definición de parámetros físicos
++ Construcción de la malla
++ Cálculo del campo de velocidad $u(x,y)$ **en el primer caso se considera la $u(x,y)$ constante (no es un campo), y en el segundo se define a partir de la información del modelo**
++ Definición de los coeficientes numéricos del esquema SOR
++ Implementación del algoritmo iterativo
++ Aplicación de condiciones de borde
++ Iteración del SOR
++ Gráficos finales de resultados
 
+Para el primer caso el código de resolución es simple, mientras que en el segundo caso se complejiza un poco más y se incorpora el campo de velocidad.
 
+En ambos casos, para ejecutar el código solamente hay que descargarlo y ejecutar el script.
+*Considerando que este modelo es especifico para el río Maipo, los valores de los parámetros fueron determinados y justificados en el informe.*
 
+## Resultados
 
-
-
-
+Los resultados se pueden observar de manera clara con los gráficos formados con el código. A continuación se presentan los gráficos que sintetizan los principales resultados.
 
 
 
