@@ -6,10 +6,9 @@ El dominio es representado como un canal rectangular de largo ​y ancho W, dond
 ___CATA
 
 ## Sistema físico modelado
-El sistema corresponde a un río de geometría rectangular, con un ancho transversal $W$, largo ($L_x$) y profundidad $p(x)$. En la orilla se ubica una industria que descarga de manera continua un contaminante a través de un difusor horizontal ubicado entre ($y = h$) y ($y = h + W_d$). Siendo Wd el largo del difusor.
+El sistema corresponde a un río de **geometría rectangular**, con un ancho transversal $W$, largo ($L_x$) y profundidad $p(x)$. En la orilla se ubica una industria que descarga de manera continua un contaminante a través de un difusor horizontal ubicado entre ($y = h$) y ($y = h + W_d$). Siendo Wd el largo del difusor.
 Se adjunta una imagen del sistema.
-
-![Geometría](img/Imagenmodelo1.png)
+![Geometría](Imagenmodelo1.jpg)
 
 El regimén es en estado estacionario y se asume que el río no tiene variaciones topográficas considerables y tiene un flujo estable.
 El río posee:
@@ -18,3 +17,4 @@ El río posee:
 - Mezcla turbulenta lateral caracterizada por un coeficiente de difusión ε<sub>y</sub>
 
 **La formulación física** considera un término de convección y de difusión, a continuación la ecuación:
+![Geometría](Imagenmodelo1.jpg)
