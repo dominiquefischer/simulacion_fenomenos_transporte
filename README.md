@@ -145,7 +145,7 @@ En conjunto, la combinación de diferencias finitas + SOR + esquemas “upwind�
 
 El código es ejecutado en la version 3.13.5 de python. Las librerías necesarias son numpy, matplotlib y scipy.
 
-El archivo "ModeloSOR1.ipynb" corresponde al código utilizado para $u(x,y)$ constante y el archivo "ModeloSOR2.ipynb" corresponde a $u(x,y) variable en función de la profundidad en x.
+El archivo "ModeloSOR1.ipynb" corresponde al código utilizado para $u(x,y)$ constante y el archivo "ModeloSOR2.ipynb" corresponde a $u(x,y) variable en función de la profundidad en x. Ambos códigos estan en formato Jupyter y Python
 
 Para el análisis de datos se ejecutaron dos casos distintos, uno en el que $u(x,y)$ era constante, y otro en el que existe una función relacionada a la profundidad en x. Ambos casos consideran $v(x,y) = 0$.
 
