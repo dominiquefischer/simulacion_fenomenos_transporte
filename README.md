@@ -168,5 +168,16 @@ En ambos casos, para ejecutar el código solamente hay que descargarlo y ejecuta
 
 Los resultados se pueden observar de manera clara con los gráficos formados con el código. A continuación se presentan los gráficos que sintetizan los principales resultados.
 
+Al comparar los perfiles $C(y)$ considerando $u(x,y)$ constante v/s en función de la profundidad se ve lo siguiente:
+![Cy](C(y)ucte.png) ![Cyu](C(y)ufuncion.png)
 
+Al haber velocidades muy distintas, la difusión lateral no alcanza a mezclar el contaminante hacia regiones donde la advección es más rápida.
+El río se vuelve un sistema con zonas de transporte eficiente (centro) y zonas lentas (cerca del difusor), lo que reduce la mezcla.
+Cuando $u(x,y)$ es constante se logra una mezcla muy rápida --> La pluma se abre como un “abanico”, alcanza casi toda la sección transversal y se atenúa suavemente.
+Y cuando es variable se logra uba ezcla lenta y poco uniforme.El contaminante queda “pegado” a la orilla del difusor, porque la velocidad más baja ahí reduce la advección, la velocidad alta del centro del río se lleva agua limpia antes de que el contaminante llegue.
 
+Esto es precisamente lo que ocurre en ríos reales, donde la velocidad no es uniforme.
+
+Por eso el segundo caso es más realista y más coherente físicamente.
+
+Con los otros gráficos formados se puede concluir lo mismo.
