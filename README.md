@@ -33,7 +33,9 @@ Este tipo de descarga genera una **pluma de contaminante** que se desplaza y se 
 La **formulación física** está gobernado por procesos de **transporte de masa**, específicamente:
 
 **1. Advección:** El contaminante es arrastrado por la velocidad del río $u(x,y)$, lo que genera el movimiento predominante en el eje longitudinal. Consideramos $v(x,y) = 0$ al implementar el modelo. Pero en la realidad, sí existe advección en el eje $y$ también.
+
 **2. Difusión turbulenta lateral:** Describe la mezcla del contaminante en el eje transversal $y$ debido a la turbulencia del flujo. Está representada mediante un coeficiente ε<sub>y</sub>
+
 **3. Decaimiento químico:** Se incorpora mediante un término de desaparición proporcional a la concentración, con constante $k_e$.
    
 Estos mecanismos se acoplan para formar la ecuación diferencial parcial bidimensional utilizada en el modelo:
