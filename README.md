@@ -153,6 +153,8 @@ Para el análisis de datos se ejecutaron dos casos distintos, uno en el que $u(x
 
 El código completo se ejecuta dentro de un único archivo Python y no requiere archivos adicionales.
 
+Los parámetros utilizados en el código fueron obtenidos del informe del cual se basó el modelo, el cual esta citado en el informe entregado.
+
 El archivo del código contiene:
 + Definición de parámetros físicos
 + Construcción de la malla
@@ -166,7 +168,6 @@ El archivo del código contiene:
 Para el primer caso el código de resolución es simple, mientras que en el segundo caso se complejiza un poco más y se incorpora el campo de velocidad.
 
 En ambos casos, para ejecutar el código solamente hay que descargarlo y ejecutar el script.
-*Considerando que este modelo es especifico para el río Maipo, los valores de los parámetros fueron determinados y justificados en el informe.*
 
 ## Resultados
 
