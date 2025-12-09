@@ -30,7 +30,7 @@ Este tipo de descarga genera una **pluma de contaminante** que se desplaza y se 
 - El contaminante, sin reacción química compleja. Su concentración evoluciona debido al transporte de masa y al decaimiento químico $K_e$.
 
 
-La **formulación física** está gobernado por procesos de **transporte de masa**, específicamente:
+La **formulación física** está gobernado por procesos de **transporte de masa y momentum**, específicamente:
 
 **1. Advección:** El contaminante es arrastrado por la velocidad del río $u(x,y)$, lo que genera el movimiento predominante en el eje longitudinal. Consideramos $v(x,y) = 0$ al implementar el modelo. Pero en la realidad, sí existe advección en el eje $y$ también.
 
