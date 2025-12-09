@@ -75,7 +75,8 @@ El **método de diferencias finitas** se basa en aproximar las derivadas por coc
 
 El uso de **SOR** es apropiado porque la ecuación discretizada es de tipo elíptico (difusión con advección estacionaria), lo que genera un sistema lineal grande pero bien condicionado para métodos iterativos. Además, SOR permite resolver el problema sin ensamblar explícitamente la matriz completa, trabajando nodo a nodo, lo que simplifica la implementación y reduce el consumo de memoria.
 
-### Pasos para la discretización
+**Pasos para la discretización**
+
 (1) **Se definió un dominio** rectangular en las direcciones longitudinal y transversal con una malla uniforme:
 
 $x_i$ $= i△x$, $i = 0,1,...,N_x$
