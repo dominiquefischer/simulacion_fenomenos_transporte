@@ -172,8 +172,6 @@ Los resultados se pueden observar de manera clara con los gráficos formados con
 Al comparar los perfiles $C(y)$ considerando $u(x,y)$ constante v/s en función de la profundidad se ve lo siguiente:
 ![Cy](Resultados/Perfil_C(y)(1).png) ![Cy](Resultados/Perfil_C(y)(2).png)
 
-Al haber velocidades muy distintas, la difusión lateral no alcanza a mezclar el contaminante hacia regiones donde la advección es más rápida.
-El río se vuelve un sistema con zonas de transporte eficiente (en el centro) y zonas lentas (cerca del difusor), lo que reduce la mezcla.
 Cuando $u(x,y)$ es constante se logra una mezcla muy rápida --> La pluma se abre como un “abanico”, alcanza casi toda la sección transversal y se atenúa suavemente.
 Y cuando es variable se logra una mezcla lenta y poco uniforme. El contaminante queda “pegado” a la orilla del difusor, porque la velocidad más baja ahí reduce la advección, la velocidad alta del centro del río se lleva agua limpia antes de que el contaminante llegue.
 
